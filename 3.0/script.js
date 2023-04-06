@@ -1,72 +1,121 @@
-const allTasksList = document.getElementById("all-tasks");
-const inProgressList = document.getElementById("in-progress");
-const completedList = document.getElementById("completed");
-const newTaskInput = document.getElementById("new-task-input");
-const addTaskButton = document.getElementById("add-task-button");
+/***  user area ***/
+
+const inputElement = document.querySelector("#user-area").querySelector("input");
+const addTaskBtn = document.querySelector("#user-area").querySelector(".add-task");
+const resetTasksBtn = document.querySelector("#user-area").querySelector(".reset-all");
+
+
+/*** tasks area ***/
+
+// all kinds of tasks <ul>
+const allTasks = document.querySelector(".all-tasks");
+const inProgressTasks = document.querySelector(".in-progress");
+const completedTasks = document.querySelector(".completed");
+
 
 // initialize tasks from local storage
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
 
-// function to save tasks to local storage
-function saveTasks() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+// save the local storage
+const saveTasks = () => {
+    localStorage.setItem('tasks', JSON.stringify(tasksArray));
 }
 
-// function to render tasks to the appropriate list
-function renderTasks() {
-    allTasksList.innerHTML = "";
-    inProgressList.innerHTML = "";
-    completedList.innerHTML = "";
+const displayTasks = () => {
+    allTasks.innerHTML = "";
+    inProgressTasks.innerHTML = "";
+    completedTasks.innerHTML = "";
 
-    tasks.forEach(function (task) {
-        const li = document.createElement("li");
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
+    tasksArray.forEach((task) => {
+
+        // create each element
+        const li = document.createElement('li');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
         checkbox.checked = task.completed;
-        const text = document.createTextNode(task.text);
+        const text = document.createElement('span');
+        text.innerText = `${task.text}`
 
         li.appendChild(checkbox);
         li.appendChild(text);
 
+        // manipulating the newly made list in the web page
         if (task.completed) {
-            li.classList.add("completed");
-            completedList.appendChild(li);
+            text.classList.add('complete');
+            completedTasks.appendChild(li);
+
         } else if (task.inProgress) {
-            li.classList.add("in-progress");
-            inProgressList.appendChild(li);
+            inProgressTasks.appendChild(li);
+
         } else {
-            allTasksList.appendChild(li);
+            allTasks.appendChild(li);
         }
 
-        // add event listener to checkbox to update task status
-        checkbox.addEventListener("click", function () {
+        // checkbox updation
+        checkbox.addEventListener('click', () => {
+
             if (task.completed) {
+                // completed to in-progress
+                text.classList.remove('complete')
                 task.completed = false;
                 task.inProgress = true;
+
             } else if (task.inProgress) {
+                // in-progress to completed
+                text.classList.add('complete')
                 task.inProgress = false;
                 task.completed = true;
+
             } else {
+                // add the tasks in all tasks
                 task.inProgress = true;
             }
-
+            
+            // save on local storage
             saveTasks();
-            renderTasks();
+            
+            // display on web page
+            displayTasks();
         });
+        
     });
+    
 }
 
-// render tasks on page load
-renderTasks();
+// displaying the already existing tasks
+displayTasks();
 
-// add task when add task button is clicked
-addTaskButton.addEventListener("click", function () {
-    const text = newTaskInput.value.trim();
 
-    if (text !== "") {
-        tasks.push({ text: text, inProgress: false, completed: false });
-        saveTasks();
-        renderTasks();
-        newTaskInput.value = "";
+// Click on 'Add Task' button
+addTaskBtn.addEventListener("click", () => {
+
+    let inputVal = inputElement.value.trim();
+
+    if (inputVal === "") {
+        alert('Please Input Something 😃')
     }
+
+    // adding tasks in the array
+    tasksArray.push({ text: inputVal, inProgress: false, completed: false });
+
+    // save on local storage
+    saveTasks();
+
+    // display on web page
+    displayTasks();
+
+    // reset the input field
+    inputElement.value = "";
 });
+
+
+// Reseting a Task
+resetTasksBtn.addEventListener('click', () => {
+
+    // clearing the local storage
+    localStorage.clear()
+    
+    // reloading the browser
+    location.reload()
+    
+})
