@@ -1,0 +1,161 @@
+// all kinds of tasks arrays
+let allTasksList = localStorage.getItem('all-items') ? JSON.parse(localStorage.getItem('all-items')) : []
+let inProgressTasksList = localStorage.getItem('in-progress-items') ? JSON.parse(localStorage.getItem('in-progress-items')) : []
+let completedList = localStorage.getItem('completed-items') ? JSON.parse(localStorage.getItem('completed-items')) : []
+
+// user area
+const inputElement = document
+    .querySelector("#user-area")
+    .querySelector("input");
+const addTaskBtn = document.querySelector("#user-area").querySelector(".add-task");
+const resetTasksBtn = document.querySelector("#user-area").querySelector(".reset-all");
+
+// all kinds of tasks <ul>
+const allTasks = document.querySelector(".all-tasks");
+const inProgressTasks = document.querySelector(".in-progress");
+const completedTasks = document.querySelector(".completed");
+
+
+// Click on 'Add Task' button
+addTaskBtn.addEventListener("click", () => {
+    let inputVal = inputElement.value;
+
+    if (!inputVal) {
+        alert(`Please input something!! 😁`);
+        return;
+    } 
+    else if (allTasksList.indexOf(inputVal) > -1) {
+        alert(`Sorry, it's already on the list 😞`);
+        return;
+    }
+
+    // updating allTaskList
+    allTasksList.push(inputVal);
+
+    // updating local storage
+    localStorage.setItem('all-items', JSON.stringify(allTasksList));
+
+    // adding in html
+    const list = document.createElement("li");
+    list.classList.add("task");
+    list.innerHTML = `<input type="checkbox"><span class="content">${inputVal}</span>`;
+    allTasks.appendChild(list)
+
+    // reset the input text
+    inputElement.value = "";
+
+    const checkbox = list.querySelector('input[type="checkbox"]');
+    let isUnderAllTasks = true;
+    checkbox.addEventListener("click", (e) => {
+        if (isUnderAllTasks && e.target.checked) {
+            // customizing checkbox
+            checkbox.checked = false;
+            isUnderAllTasks = false;
+
+            // remove from allTasksList
+            const idx = allTasksList.indexOf(inputVal);
+            if (idx > -1) {
+                allTasksList.splice(idx, 1);
+                localStorage.setItem('all-items', JSON.stringify(allTasksList));
+            }
+
+            // add in-progress list
+            if (inProgressTasksList.indexOf(inputVal) != -1) {
+                alert(`It's already in the in-progress tasks section ☹️`);
+                return;
+            } else {
+                inProgressTasks.appendChild(list);
+                inProgressTasksList.push(inputVal);
+                localStorage.setItem('in-progress-items', JSON.stringify(inProgressTasksList))
+            }
+        } else if (e.target.checked) {
+            // in-progress to completed section
+            checkbox.nextSibling.style.textDecoration = "line-through";
+            checkbox.nextSibling.style.color = "#808080";
+            completedTasks.appendChild(list);
+            completedList.push(inputVal)
+            localStorage.setItem('completed-items', JSON.stringify(completedList))
+
+            // remove from inProgressTasksList
+            const idx = inProgressTasksList.indexOf(inputVal);
+            if (idx > -1) {
+                inProgressTasksList.splice(idx, 1);
+                localStorage.setItem('in-progress-items', JSON.stringify(inProgressTasksList))
+            }
+        } else {
+            // completed to in-progress section
+            checkbox.nextSibling.style.textDecoration = "none";
+            checkbox.nextSibling.style.color = "black";
+
+            inProgressTasks.appendChild(list);
+            inProgressTasksList.push(inputVal);
+            localStorage.setItem('in-progress-items', JSON.stringify(inProgressTasksList))
+
+            completedList.splice(completedList.indexOf(inputVal), 1);
+            localStorage.setItem('completed-items', JSON.stringify(completedList))
+        }
+
+    });
+
+});
+
+
+// Reseting a Task
+resetTasksBtn.addEventListener('click', () => {
+    // clearing the local storage
+    localStorage.clear()
+
+    // deleting all the arrays
+    allTasksList = []
+    inProgressTasksList = []
+    completedList = []
+
+    // reloading the browser
+    location.reload()
+})
+
+
+const displayItems = () => {
+    // all-tasks section 
+    allTasksList.forEach(ele => {
+        allTasks.innerHTML += `<li class="task"><input type="checkbox"><span class="content">${ele}</span></li>`
+    });
+
+    // in-progress section
+    inProgressTasksList.forEach(ele => {
+        inProgressTasks.innerHTML += `<li class="task"><input type="checkbox"><span class="content">${ele}</span></li>`
+    });
+
+    // completed section
+    completedList.forEach(ele => {
+        completedTasks.innerHTML += `<li class="task"><input type="checkbox" checked><span class="content complete">${ele}</span></li>`
+    });
+}
+
+displayItems();
+
+// checkboxes
+const allTasksCheckboxes = allTasks.querySelectorAll('input')
+const inProgressTasksCheckboxes = inProgressTasks.querySelectorAll('input')
+const completedTasksCheckboxes = completedTasks.querySelectorAll('input')
+
+console.log(allTasksList);
+console.log('all', allTasksCheckboxes);
+console.log('in', inProgressTasksCheckboxes);
+console.log('com', completedTasksCheckboxes);
+
+allTasksCheckboxes.forEach(ele => {
+    ele.addEventListener('click', () => {
+        // remove from all tasks
+        const element = ele.parentNode;
+        const taskName = ele.nextSibling.innerText;
+        allTasksList.splice(allTasksList.indexOf(taskName), 1);
+        element.remove();
+        localStorage.setItem('all-items', JSON.stringify(allTasksList));
+        
+        // add in in-progress tasks
+        inProgressTasksList.push(taskName);
+        console.log('click');
+        console.log(allTasksList);
+    })
+})
