@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Todo List</title>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- css -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    
+    <div id="user-area">
+        <input type="text" placeholder="type your tasks here..." name="task" class="arimo">
+        <button class="arimo add-task">Add Task</button>
+        <button class="arimo reset-all">Reset All</button>
+    </div>
+
+    <div id="task-area">
+        <div class="container">
+            <h2>All Tasks</h2>
+            <ul class="all-tasks">
+            </ul>
+        </div>
+
+        <div class="container">
+            <h2>In Progress</h2>
+            <ul class="in-progress">
+            </ul>
+        </div>
+        
+        <div class="container">
+            <h2>Completed</h2>
+            <ul class="completed">   
+            </ul>
+        </div>
+    </div>
+
+    
+    <script src="./script.js"></script>
+</body>
+
+</html>
