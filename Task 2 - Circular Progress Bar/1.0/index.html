@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Circular Progress Bar </title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            background-color: #82b8e7;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .circular {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            background: conic-gradient(#db0ddb 66deg, #f8f8f8 0deg);
+            margin-top: 20px;
+            padding: 1px;
+            box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.2), -6px -6px 10px -1px rgba(255, 255, 255, 0.3);
+        }
+
+        .little-circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+            box-shadow: inset 6px 6px 10px -1px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            height: 150px;
+            width: 150px;
+            margin: 25px auto;
+        }
+
+        .percentage {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        circle {
+            fill: none;
+            stroke: url('#GradientColor');
+            stroke-width: 20px;
+            stroke-dasharray: 4;
+            stroke-dashoffset: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="circular">
+            <div class="little-circle">
+                <span class="percentage"> _%</span>
+            </div>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200px" height="200px">
+            <defs>
+                <linearGradient id="GradientColor">
+                    <stop offset="0%" stop-color="#e91e63" />
+                    <stop offset="100%" stop-color="#673ab7" />
+                </linearGradient>
+            </defs>
+            <circle cx="100" cy="100" r="80" stroke-linecap="round" />
+        </svg>
+    </div>
+
+
+    <div class="input-sec">
+        <input type="text">
+        <button>Time (s) </button>
+    </div>
+
+
+    <script>
+        const circle = document.querySelector('.circular')
+        const input = document.querySelector('input')
+        const button = document.querySelector('button')
+        const littleCircle = document.querySelector('.little-circle')
+
+        button.addEventListener('click', func)
+
+        function func() {
+            let timeInSeconds = Number(input.value)
+
+            let count = 0, degree = 0
+            const circulerPath = setInterval(() => {
+                document.querySelector('.percentage').textContent = ` ${count}%`
+                circle.style.background = `conic-gradient(#d10ad1 ${degree}deg, #ededed 0deg)`;
+
+                if (count >= 100)
+                    clearInterval(circulerPath);
+
+                count++
+                degree += 3.6
+            }, timeInSeconds * 10)
+
+            input.value = ''
+        }
+    </script>
+</body>
+
+</html>
