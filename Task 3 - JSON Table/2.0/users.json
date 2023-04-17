@@ -1,0 +1,44 @@
+[
+    {
+        "Name": "John Doe",
+        "Age": 25,
+        "Email": "johndoe@example.com",
+        "Phone": "+91-1234567890",
+        "Address": "123 Main St Ladder"
+    },
+    {
+        "Name": "Jane Austen Doe",
+        "Age": 30,
+        "Email": "janedoe@example.com",
+        "Phone": "+91-2345678901",
+        "Address": "456 Elementary St"
+    },
+    {
+        "Name": "Bob Smith",
+        "Age": 35,
+        "Email": "bobsmith@example.com",
+        "Phone": "+91-3456789012",
+        "Address": "789 Oak St"
+    },
+    {
+        "Name": "Alice Clevelander Johnson",
+        "Age": 40,
+        "Email": "alicejohnson@example.com",
+        "Phone": "+91-4567890123",
+        "Address": "1011 Pine Fur St"
+    },
+    {
+        "Name": "Mike Brown",
+        "Age": 45,
+        "Email": "mikebrown@example.com",
+        "Phone": "+91-5678901234",
+        "Address": "1213 Cedar Fruit St"
+    },
+    {
+        "Name": "Sara Taylor Davis",
+        "Age": 50,
+        "Email": "saradavis@example.com",
+        "Phone": "+91-6789012345",
+        "Address": "1415 Maple St"
+    }
+]
