@@ -1,0 +1,15 @@
+{
+  "name": "restful-apis-using-node-and-express",
+  "version": "1.0.0",
+  "description": "Let's learn how to develop Rest APIs in Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sounak Saha",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
