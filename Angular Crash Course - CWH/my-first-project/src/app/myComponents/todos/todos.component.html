@@ -1,0 +1,4 @@
+<div *ngFor="let todo of todos">
+    <!-- <li>{{todo.title}} -> {{todo.title}} - {{todo.title}}</li> -->
+    <app-todo-item [todo]="todo"></app-todo-item>
+</div>
