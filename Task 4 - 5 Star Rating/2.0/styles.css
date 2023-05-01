@@ -1,0 +1,17 @@
+.star {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-image: url('star.png');
+    background-size: cover;
+    cursor: pointer;
+  }
+  
+  .full {
+    background-position: 0 0;
+  }
+  
+  .half {
+    background-position: -32px 0;
+  }
+  
