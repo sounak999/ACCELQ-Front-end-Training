@@ -1,45 +1,81 @@
-// Get all star elements
-const stars = document.querySelectorAll(".star");
+// const stars = document.querySelector('#stars')
 
-// Add event listener for mouseover and mouseout
+// stars.addEventListener('mouseover', (e) => {
+//     console.log(e.target);
+// })
+
+// stars.addEventListener('click', (e) => {
+//     console.log(e);
+// })
+
+// Get all the star elements
+const stars = document.querySelectorAll("#stars .star");
+
+function isLeft(num) {
+    let div = num / 0.5;
+    if (div & 1) {
+        return true;
+    }
+
+    return false;
+}
+
+let clickedValue = 0
+
+// Add event listener to each star element
 stars.forEach((star) => {
-    star.addEventListener("mouseover", hoverStar);
-    star.addEventListener("mouseout", resetStars);
-    star.addEventListener("click", setRating);
+    star.addEventListener("click", () => {
+        clickedValue = parseFloat(star.getAttribute("data-value"));
+
+        // Loop through all the stars
+        stars.forEach((star) => {
+            const currentValue = parseFloat(star.getAttribute("data-value"));
+
+            // If the current star's value is less than or equal
+            // to the clicked star's value, add a class to it
+            if (currentValue <= clickedValue) {
+                if (isLeft(currentValue)) {
+                    star.classList.add("left");
+                } else {
+                    star.classList.add("right");
+                }
+            } else {
+                if (isLeft(currentValue)) {
+                    star.classList.remove("left");
+                } else {
+                    star.classList.remove("right");
+                }
+            }
+        });
+
+        
+        document.querySelector('h2').innerText = `You clicked ${clickedValue} stars`
+    });
+
+    star.addEventListener("mouseover", () => {
+        clickedValue = parseFloat(star.getAttribute("data-value"));
+
+        // Loop through all the stars
+        stars.forEach((star) => {
+            const currentValue = parseFloat(star.getAttribute("data-value"));
+
+            // If the current star's value is less than or equal
+            // to the clicked star's value, add a class to it
+            if (currentValue <= clickedValue) {
+                if (isLeft(currentValue)) {
+                    star.classList.add("left");
+                } else {
+                    star.classList.add("right");
+                }
+            } else {
+                if (isLeft(currentValue)) {
+                    star.classList.remove("left");
+                } else {
+                    star.classList.remove("right");
+                }
+            }
+        });
+
+        document.querySelector('h2').innerText = `You clicked ${clickedValue} stars`
+    });
 });
-
-// Hover over a star
-function hoverStar(e) {
-    const star = e.target;
-    const value = star.dataset.value;
-    highlightStars(value);
-}
-
-// Reset all stars
-function resetStars() {
-    stars.forEach((star) => {
-        star.classList.remove("full");
-        star.classList.remove("half");
-    });
-}
-
-// Set the rating on click
-function setRating(e) {
-    const star = e.target;
-    const value = star.dataset.value;
-    alert(`You rated ${value} stars!`);
-}
-
-// Highlight stars up to the selected one
-function highlightStars(value) {
-    stars.forEach((star) => {
-        star.classList.remove("full");
-        star.classList.remove("half");
-        const starValue = star.dataset.value;
-        if (starValue <= value) {
-            star.classList.add("full");
-        } else if (starValue - 0.5 === parseFloat(value)) {
-            star.classList.add("half");
-        }
-    });
-}

@@ -1,17 +1,31 @@
+#stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
 .star {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    background-image: url('star.png');
+    height: 50px;
+    width: 25px;
+}
+
+.lf-br {
+    background-image: url(./star-left-before.png);
     background-size: cover;
-    cursor: pointer;
-  }
-  
-  .full {
-    background-position: 0 0;
-  }
-  
-  .half {
-    background-position: -32px 0;
-  }
-  
+}
+
+.rt-br {
+    background-image: url(./star-right-before.png);
+    background-size: cover;
+}
+
+.left {
+    background-image: url(./star-left.png);
+    background-size: cover;
+}
+
+.right {
+    background-image: url(./star-right.png);
+    background-size: cover;
+}
