@@ -1,0 +1,33 @@
+.post h2 {
+  font-size: 24px;
+}
+.post div {
+  margin: 18px 0;
+}
+.post div .postImage {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 9px 18px rgba(0, 0, 0, 0.15);
+  display: block;
+  height: 300px;
+  margin: 10px auto;
+  max-width: 45%;
+}
+.post div .liked {
+  border: 5px solid #f8124b;
+}
+.post div .postButton {
+  background-color: #0078d7;
+  border: none;
+  border-radius: 9px;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 1rem;
+  margin: 18px auto;
+  padding: 9px 18px;
+  transition: background-color 0.2s ease-in-out;
+}
+.post div .postButton:hover {
+  background-color: #005a9e;
+}/*# sourceMappingURL=styles.css.map */

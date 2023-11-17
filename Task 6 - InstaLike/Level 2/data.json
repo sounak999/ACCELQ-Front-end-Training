@@ -1,0 +1,22 @@
+[
+  {
+    "imageURL": "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d",
+    "isLiked": true
+  },
+  {
+    "imageURL": "https://images.unsplash.com/photo-1529335764857-3f1164d1cb24",
+    "isLiked": true
+  },
+  {
+    "imageURL": "https://images.unsplash.com/photo-1637858868799-7f26a0640eb6",
+    "isLiked": false
+  },
+  {
+    "imageURL": "https://cdn.pixabay.com/photo/2014/10/02/08/30/honey-bee-469560_1280.png",
+    "isLiked": false
+  },
+  {
+    "imageURL": "https://cdn.pixabay.com/photo/2016/05/12/23/03/lamb-1388937_1280.png",
+    "isLiked": true
+  }
+]
