@@ -1,0 +1,35 @@
+Instagram Like
+
+JSON file --> imagesURL, Like --> 
+total images like --> total likes
+
+Directive 
+--> show us a image, button 
+--> like/unlike (double tap)
+
+grid --> (SCSS)
+you can use jquery as well
+
+Thought Process: 
+
+1. use a controller to show the images on HTML ($http)
+2. Using ng-repeat to format image and button
+3. Using the $http, how we can get totalLikes using filter
+
+Level 2 -->
+img directive
+
+div>
+	img-directive
+	button
+
+parent would change the button
+
+parent-child relationship with directive
+button clicked and image's border is changed
+
+Level 3 --> 
+
+url & isLiked inside custom element
+double click inside the directive
+return something to parent

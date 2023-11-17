@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="instaLike">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insta Like</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body>
+
+    <div ng-controller="mainController as ctrl" class="post">
+        <h2>Total Likes: {{totalLikes}}</h2>
+        
+        <div ng-repeat="item in items">
+            <image-element item="item" toggle-like="toggleLike(item)" class="postImage"></image-element>
+
+            <button ng-click="toggleLike(item)" class="postButton">{{item.isLiked ? 'Liked!' : 'Like'}}</button>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
