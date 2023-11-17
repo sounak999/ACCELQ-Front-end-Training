@@ -1,0 +1,37 @@
+.post {
+    h2 {
+        font-size: 24px;
+        color: #333;
+    }
+
+    div {
+        margin: 18px 0;
+
+        img {
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            display: block;
+            height: 300px;
+            margin: 0 auto;
+            max-width: 45%;
+        }
+
+        button {
+            background-color: #0078d7;
+            border: none;
+            border-radius: 9px;
+            color: #fff;
+            cursor: pointer;
+            display: block;
+            font-size: 1rem;
+            margin: 1rem auto 0;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.2s ease-in-out;
+
+            &:hover {
+                background-color: #005a9e;
+            }
+        }
+    }
+}
