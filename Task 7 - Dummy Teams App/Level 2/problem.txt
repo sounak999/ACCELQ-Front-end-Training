@@ -1,0 +1,18 @@
+users -> id, name, dummy messages (1st thing)
+input box and button --> 
+status (2nd thing)
+global variable (active, away(30s), offline(1m))
+
+localStorage for messages
+
+
+
+learnings:-
+
+1. template inside a directive must have only one root element but in my case, it was two. So it threw error.
+
+--> 
+1. Grid like
+2. chatbox is directive
+3. JSON have id 
+4. messages will have scrollbar

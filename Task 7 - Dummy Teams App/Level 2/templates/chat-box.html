@@ -1,0 +1,17 @@
+<div class="user-box">
+    <div class="user-header">
+        <span class="user-name">{{ user.Name }}</span>
+        <img class="status-icon" src="images/active.png" alt="active">
+        <img class="status-icon" src="images/away.png" alt="away">
+        <img class="status-icon" src="images/offline.png" alt="offline">
+    </div>
+
+    <div class="user-main">
+        <div class="messages" ng-repeat="message in user.Messages">{{ message }}</div>
+    </div>
+
+    <div class="user-footer">
+        <input class="user-input" type="text" placeholder="Type your message..." ng-model="newMessage">
+        <button class="user-button" ng-click="addMessage()">Send</button>
+    </div>
+</div>
