@@ -1,0 +1,60 @@
+[
+    {
+        "id": 1,
+        "Name": "Sounak Saha",
+        "Messages": [
+            "demo messages on the way to the shore",
+            "there can be a lot of other messages",
+            "Let's just think of something else"
+        ]
+    },
+    {
+        "id": 2,
+        "Name": "Accelq User",
+        "Messages": [
+            "Suscipit, soluta unde quibusdam dolorum consectetur nostrum quo voluptate, similique hic optio error! Laudantium",
+            "consectetur adipisicing elit. Lorem ipsum dolor sit amet."
+        ]
+    },
+    {
+        "id": 3,
+        "Name": "Alice",
+        "Messages": [
+            "Hello there!",
+            "How's your day going?",
+            "I love chatting with AI!"
+        ]
+    },
+    {
+        "id": 4,
+        "Name": "Bob",
+        "Messages": [
+            "Hey Alice!",
+            "I'm doing great, thanks.",
+            "AI conversations are fascinating!"
+        ]
+    },
+    {
+        "id": 5,
+        "Name": "Dev",
+        "Messages": [
+            "I love coding"
+        ]
+    },
+    {
+        "id": 6,
+        "Name": "PS",
+        "Messages": [
+            "I love accelq products",
+            "Hello there!",
+            "Hi",
+            "What's your name?",
+            "Hi, I saved this money."
+        ]
+    },
+    {
+        "id": 7,
+        "Name": "Arijit",
+        "Messages": []
+    }
+]

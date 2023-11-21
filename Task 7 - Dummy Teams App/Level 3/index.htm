@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="userApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Box App</title>
+    <script src="https://code.angularjs.org/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <div ng-controller="UserController">
+        <h2>Total Users: {{totalUsers}}</h2>
+        <h3> Active Users: {{noOfUsers.active}}</h3>
+        <h3> Away Users: {{noOfUsers.away}}</h3>
+        <h3> Offline Users: {{noOfUsers.offline}}</h3>
+
+        <div class="users-container">
+
+            <div ng-repeat="user in users">
+
+                <chat-box user="user" no-of-users="noOfUsers"></chat-box>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script src="directives/chat-box.js"></script>
+</body>
+
+</html>
