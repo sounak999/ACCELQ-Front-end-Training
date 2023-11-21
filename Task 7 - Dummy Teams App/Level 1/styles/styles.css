@@ -1,0 +1,58 @@
+.user-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 300px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+.user-box .user-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.user-box .user-header .user-name {
+  font-weight: bold;
+}
+.user-box .user-header .status-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+.user-box .user-main .messages {
+  background-color: #d9d9fc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.user-box .user-footer .user-input {
+  width: 90%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.user-box .user-footer .error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.user-box .user-footer .user-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+.user-box .user-footer .user-button:hover {
+  background-color: #0056b3;
+}/*# sourceMappingURL=styles.css.map */

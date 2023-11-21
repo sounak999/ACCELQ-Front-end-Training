@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="userApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Box App</title>
+    <script src="https://code.angularjs.org/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <div ng-controller="UserController">
+        <h2>Total Users: {{totalUsers}}</h2>
+
+        <div class="user-box" ng-repeat="user in users" ng-click="resetTimer(user)">
+            {{preLoad(user)}}
+            <!-- <user-activity user="user"></user-activity> -->
+
+            <!-- <user-message user="user" add-message="addMessage(user, newMessage)"></user-message> -->
+            <div class="user-header">
+                <span class="user-name">{{ user.Name }}</span>
+                <img class="status-icon" src="images/active.png" alt="Online" ng-show="user.online">
+                <img class="status-icon" src="images/away.png" alt="Away" ng-show="user.away">
+                <img class="status-icon" src="images/offline.png" alt="Offline" ng-show="user.offline">
+            </div>
+
+
+            <div class="user-main">
+                <div class="messages" ng-repeat="message in user.Messages">{{ message }}</div>
+            </div>
+
+            <div class="user-footer">
+
+                <input class="user-input" type="text" placeholder="Type your message..." ng-model="newMessage">
+
+                <div class="error-message" ng-show="user.showError">{{ user.errorMessage }}</div>
+
+                <button class="user-button" ng-click="addMessage(user, newMessage)">Send</button>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
